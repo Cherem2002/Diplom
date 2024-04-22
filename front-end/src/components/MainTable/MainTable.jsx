@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './MainTable.css';
 import Table from '../Table/Table';
+import Draggable from 'react-draggable';
+ 
 
 
 const MainTable = ({ tableData }) => {
