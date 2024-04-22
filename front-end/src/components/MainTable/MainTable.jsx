@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './MainTable.css';
 import Table from '../Table/Table';
 import Draggable from 'react-draggable';
- 
+
 
 
 const MainTable = ({ tableData }) => {
@@ -14,27 +14,29 @@ const MainTable = ({ tableData }) => {
   }
 
   return (
-    <div className="MainTable">
-      <form>
-        <h2>{tableData.name}</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Имя</th>
-              <th>Тип</th>
-            </tr>
-          </thead>
-          <tbody>
-            {tableData.rows.map((row, index) => (
-              <tr key={index}>
-                <td>{row.name}</td>
-                <td>{row.type}</td>
+    <Draggable>
+      <div className="MainTable">
+        <form>
+          <h2>{tableData.name}</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Имя</th>
+                <th>Тип</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </form>
-    </div>
+            </thead>
+            <tbody>
+              {tableData.rows.map((row, index) => (
+                <tr key={index}>
+                  <td>{row.name}</td>
+                  <td>{row.type}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </form>
+      </div>
+    </Draggable>
   );
 };
 
