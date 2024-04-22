@@ -1,0 +1,41 @@
+.Sticker {
+    position: fixed;
+    background-color: #fff;
+    border: 1px solid #000;
+    padding: 10px;
+    z-index: 999;
+    /* Чтобы стикер был поверх других элементов */
+    cursor: move;
+}
+
+.StickerText {
+    width: 200px;
+    height: 100px;
+    resize: none;
+    /* Запрет на изменение размеров textarea */
+}
+
+.Sticker button {
+    position: absolute;
+    bottom: 5px;
+    /* Отступ от нижнего края */
+    left: 50%;
+    /* Расположение по центру */
+    transform: translateX(-50%);
+    /* Центрирование по горизонтали */
+    border: none;
+    background-color: #ff6347;
+    /* Цвет фона кнопки */
+    color: #fff;
+    /* Цвет текста кнопки */
+    padding: 5px 10px;
+    /* Внутренний отступ кнопки */
+    border-radius: 3px;
+    /* Скругление углов кнопки */
+    cursor: pointer;
+}
+
+.Sticker button:hover {
+    background-color: #ff483e;
+    /* Цвет фона кнопки при наведении */
+}

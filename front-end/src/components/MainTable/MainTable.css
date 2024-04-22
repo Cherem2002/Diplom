@@ -1,0 +1,36 @@
+/* MainTable.css */
+.MainTable {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+
+.MainTable form {
+  width: 250px;
+  /* Ширина формы */
+  padding: 10px;
+  border: 1px solid #2180CF;
+  border-radius: 5px;
+  background-color: white;
+}
+
+
+.MainTable form th {
+  padding: 5px;
+}
+
+.MainTable form td {
+  padding: 5px;
+}
+
+h2 {
+  background-color: #2180CF;
+  color: white;
+}

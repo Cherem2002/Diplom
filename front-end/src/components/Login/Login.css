@@ -1,0 +1,53 @@
+.Login {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  /* Устанавливаем направление контейнера на вертикальное */
+  justify-content: center;
+  /* Выравнивание по вертикали */
+  align-items: center;
+  /* Выравнивание по горизонтали */
+  height: 100vh;
+  /* Минимальная высота вьюпорта */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  background-color: rgba(0, 0, 0, 0.5)
+}
+
+.Login form {
+  width: 300px;
+  /* Ширина формы */
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.Login form div {
+  margin-bottom: 5px;
+  margin-right: 15px;
+}
+
+.Login form label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.Login form input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #2180CF;
+  border-radius: 3px;
+}
+
+.Login p a {
+  margin-left: 5px;
+  color: #2180CF;
+  cursor: pointer;
+}
+

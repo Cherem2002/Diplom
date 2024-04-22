@@ -1,0 +1,46 @@
+.ImP {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  /* Устанавливаем направление контейнера на вертикальное */
+  justify-content: center;
+  /* Выравнивание по вертикали */
+  align-items: center;
+  /* Выравнивание по горизонтали */
+  height: 100vh;
+  /* Минимальная высота вьюпорта */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  background-color: rgba(0, 0, 0, 0.5)
+}
+
+.ImP form {
+  width: 300px;
+  /* Ширина формы */
+  padding: 20px;
+  border: 1px solid #2180CF;
+  border-radius: 5px;
+  background-color: white;
+}
+
+
+.ImP form input {
+  width: 93%;
+  padding: 10px;
+  border: 1px solid #2180CF;
+  border-radius: 3px;
+}
+
+.ChooseSql{
+  margin-bottom: 15px;
+}
+
+.SqlText {
+  width: 97%;
+  height: 100px;
+  resize: none;
+  /* Запрет на изменение размеров textarea */
+}

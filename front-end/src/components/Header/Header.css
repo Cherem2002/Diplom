@@ -1,0 +1,164 @@
+/* Стили для вашего заголовка (header) */
+.Header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 10px;
+  border-bottom: 5px solid #2180CF;
+  z-index: 3; 
+}
+
+.Bar{
+  display: flex;
+  align-items: center;
+}
+
+.Login-link {
+  font-size: 35px;
+  padding: 10px 25px;
+  margin-left: auto;
+  cursor: pointer;
+  position: relative;
+  color: #2180CF;
+}
+
+.Login-link a {
+  color: #2180CF;
+  text-decoration: none;
+  display: block;
+  padding: 8px 12px;
+  transition: background-color 0.3s ease;
+  font-size: 20px;
+}
+
+/* Стили для вложенных ссылок (Войти и Зарегистрироваться) */
+.Login-link a:hover {
+  color: #ffffff;
+  background-color: #2180CF;
+}
+
+/* Отображение меню при открытом состоянии */
+.Login-link span::after {
+  content: '\25BC';
+  /* Символ стрелки вниз */
+  font-size: 12px;
+}
+
+/* Скрытие стрелки при закрытом состоянии */
+.Login-link.collapsed span::after {
+  content: '\25BC';
+  /* Символ стрелки вправо */
+}
+
+/* Стили для вложенного меню */
+.Login-link ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  display: none;
+  font-size: 12px;
+}
+
+/* Отображение меню при открытом состоянии */
+.Login-link.open ul {
+  display: block;
+}
+
+/* Стили для вашего логотипа (bar) */
+.Bar img {
+  cursor: pointer;
+  width: 50px;
+  /* Подберите нужную ширину логотипа */
+}
+
+.Table img {
+  cursor: pointer;
+  width: 50px;
+}
+
+.Note img {
+  cursor: pointer;
+  width: 50px;
+}
+
+.Import img {
+  cursor: pointer;
+  width: 50px;
+}
+
+.Export img {
+  cursor: pointer;
+  width: 50px;
+}
+
+.Back img {
+  cursor: pointer;
+  width: 50px;
+}
+
+.Forward img {
+  cursor: pointer;
+  width: 50px;
+}
+
+.NT {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 5px;
+  /* Выравнивание элементов по горизонтали */
+  border-right: 5px solid #2180CF;
+  border-left: 5px solid #2180CF;
+}
+
+.Note,
+.Table {
+  flex: 5;
+  position: relative;
+}
+
+.Export,
+.Import {
+  flex: 5;
+  padding: 5px;
+  /* Это обеспечит равномерное распределение ширины между .Note и .Table */
+}
+
+.im-ex {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 5px;
+  /* Выравнивание элементов по горизонтали */
+}
+
+.Name {
+  display: flex;
+  color: #2180CF;
+  font-size: 35px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.Back,
+.Forward {
+  flex: 5;
+  padding: 5px;
+}
+
+.Steps {
+  display: flex;
+  align-items: center;
+  padding: 5px 5px;
+}
+
+
+

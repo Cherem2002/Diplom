@@ -1,0 +1,29 @@
+.Bar-menu {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    height: 74vh;
+    width: 310px;
+    padding: 3rem 0;
+    background-color: #2180CF;
+    color: white;
+    list-style-type: none;
+    font-size: 25px;
+}
+
+.Bar-menu a {
+    cursor: pointer;
+  }
+
+
+.Creat{
+    padding-bottom: 5px;
+} 
+
+.Down{
+    padding-bottom: 5px;
+}
+
+.Sav{
+    padding-bottom: 5px;
+}

@@ -1,0 +1,89 @@
+.Create {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    /* Устанавливаем направление контейнера на вертикальное */
+    justify-content: center;
+    /* Выравнивание по вертикали */
+    align-items: center;
+    /* Выравнивание по горизонтали */
+    height: 100vh;
+    /* Минимальная высота вьюпорта */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+    background-color: rgba(0, 0, 0, 0.5)
+}
+
+.Create form {
+    width: 300px;
+    /* Ширина формы */
+    padding: 20px;
+    border: 1px solid #2180CF;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.Create form div {
+    margin-bottom: 5px;
+    margin-right: 15px;
+}
+
+.Create form label {
+    display: block;
+    margin-bottom: 10px;
+    color: #000;
+    font-size: 25px;
+    align-items: center;
+}
+
+.Create form input {
+    width: 98%;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 3px;
+}
+
+.CrBtn{
+    padding-top: 5px;
+}
+
+.CrBtn button {
+    width: 105%;
+    padding: 10px;
+    background-color: white;
+    color: #2180CF;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    border: 1px solid #2180CF;
+    transition-duration: 0.4s;
+}
+
+.CrBtn button:hover {
+    background-color: #2180CF;
+    color: #fff;
+}
+
+.DlBtn{
+    padding-top: 5px;
+}
+
+.DlBtn button {
+    width: 105%;
+    padding: 10px;
+    background-color: white;
+    color: red;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    border: 1px solid red;
+    transition-duration: 0.4s;
+}
+
+.DlBtn button:hover {
+    background-color: red;
+    color: white;
+}
