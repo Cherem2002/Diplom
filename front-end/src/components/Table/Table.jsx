@@ -27,6 +27,8 @@ const Table = ({ setTableData  , setTableOpen}) => {
     { value: 'char', label: 'char' },
   ];
 
+  const [tableIdCounter, setTableIdCounter] = useState(1);
+
   const handleInputChange = (index, field, value) => {
     const updatedRows = [...tableRows];
     updatedRows[index][field] = value;
@@ -51,13 +53,14 @@ const Table = ({ setTableData  , setTableOpen}) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const tableData  = { name: tableName, rows: tableRows };
+    const tableData = { id: tableIdCounter, name: tableName, rows: tableRows };
     setTableData(tableData );
     console.log('Отправленные данные:');
     console.log(tableData); 
     setTableName('');
     setTableRows([{ /* reset rows to initial state */ }]);
     setTableOpen(false);
+    setTableIdCounter(tableIdCounter + 1);
   };
 
  
