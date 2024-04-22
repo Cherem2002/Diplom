@@ -87,7 +87,7 @@ const Table = ({ setTableData  , setTableOpen}) => {
             {tableRows.map((row, index) => (
               <tr key={index}>
                 <td><input type="text" value={row.name} onChange={(e) => handleInputChange(index, 'name', e.target.value)} /></td>
-                <td><Select options={options} value={row.type} onChange={(value) => handleInputChange(index, 'type', value)} /></td>
+                <td><Select options={options} value={row.type} onChange={(selectedOption) => handleInputChange(index, 'type', selectedOption.value)} /></td>
                 <td><input type="checkbox" checked={row.isPrimaryKey} onChange={(e) => handleInputChange(index, 'isPrimaryKey', e.target.checked)} /></td>
                 <td><input type="checkbox" checked={row.isUnique} onChange={(e) => handleInputChange(index, 'isUnique', e.target.checked)} /></td>
                 <td><input type="checkbox" checked={row.isAutoIncrement} onChange={(e) => handleInputChange(index, 'isAutoIncrement', e.target.checked)} /></td>
