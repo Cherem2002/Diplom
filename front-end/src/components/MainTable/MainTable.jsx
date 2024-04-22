@@ -9,34 +9,36 @@ const MainTable = ({ tableData }) => {
   console.log('Пришедшие данные:');
   console.log(tableData);
 
-  if (!tableData || !tableData.name || !tableData.rows) {
+  if (!tableData || !tableData.length) {
     return null; // Возвращаем null, чтобы не создавать никаких элементов
   }
 
   return (
-    <Draggable>
-      <div className="MainTable">
-        <form>
-          <h2>{tableData.name}</h2>
-          <table>
-            <thead>
-              <tr>
-                <th>Имя</th>
-                <th>Тип</th>
-              </tr>
-            </thead>
-            <tbody>
-              {tableData.rows.map((row, index) => (
-                <tr key={index}>
-                  <td>{row.name}</td>
-                  <td>{row.type}</td>
+    <div className="MainTable">
+      {tableData.map((table, index) => (
+        <Draggable key={index}>
+          <form key={table.id}>
+            <h2>{table.name}</h2>
+            <table>
+              <thead>
+                <tr>
+                  <th>Имя</th>
+                  <th>Тип</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </form>
-      </div>
-    </Draggable>
+              </thead>
+              <tbody>
+                {table.rows.map((row, index) => (
+                  <tr key={index}>
+                    <td>{row.name}</td>
+                    <td>{row.type}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </form>
+          </Draggable>
+        ))}
+        </div>
   );
 };
 

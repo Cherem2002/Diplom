@@ -6,7 +6,7 @@ import plus from './blue-plus.png';
 import {toggleTablePopup} from '../Header/Header'
 import MainTable from '../MainTable/MainTable';
 
-const Table = ({ setTableData  , setTableOpen}) => {
+const Table = ({ tableData, setTableData  , setTableOpen}) => {
   const [tableName, setTableName] = useState('');
   const [tableRows, setTableRows] = useState([
     {
@@ -53,14 +53,15 @@ const Table = ({ setTableData  , setTableOpen}) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const tableData = { id: tableIdCounter, name: tableName, rows: tableRows };
-    setTableData(tableData );
+    const newTableData = { id: tableIdCounter, name: tableName, rows: tableRows };
+    setTableData(prevTableData => [...prevTableData, newTableData]);
     console.log('Отправленные данные:');
-    console.log(tableData); 
+    console.log(newTableData); 
     setTableName('');
     setTableRows([{ /* reset rows to initial state */ }]);
-    setTableOpen(false);
     setTableIdCounter(tableIdCounter + 1);
+    setTableOpen(false);
+
   };
 
  
