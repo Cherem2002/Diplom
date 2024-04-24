@@ -18,7 +18,7 @@
 }
 
 .TableCreator form {
-  width: 875px;
+  width: 1000px;
   /* Ширина формы */
   padding: 20px;
   padding-right: 35px;
@@ -32,6 +32,59 @@
   padding: 8px;
   border: 1px solid black;
   border-radius: 3px;
+}
+
+.CreateBtn button{
+  width: 100%;
+  padding: 10px;
+  background-color: white;
+  color: #2180CF;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  border: 1px solid #2180CF;
+  transition-duration: 0.4s;
+}
+
+.CreateBtn button:hover {
+  background-color: #2180CF;
+  color: #fff;
+}
+
+.CloseBtn button{
+  width: 100%;
+  padding: 10px;
+  background-color: #fff;
+  color: red;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-top: 10px;
+  border: 1px solid red;
+  transition-duration: 0.4s;
+}
+
+.CloseBtn button:hover {
+  background-color: red;
+  color: #fff;
+}
+
+.DeleteBtn button{
+  width: 100%;
+  padding: 10px;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-top: 10px;
+  border: 1px solid red;
+  transition-duration: 0.4s;
+}
+
+.DeleteBtn button:hover {
+  background-color: white;
+  color: red;
 }
 
 .TableCreator form th {

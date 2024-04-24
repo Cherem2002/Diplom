@@ -104,11 +104,14 @@ const Table = ({ tableData, setTableData  , setTableOpen}) => {
           </tbody>
         </table>
         <div className='Buttons'>
-          <div className='RegBtn'>
+          <div className='CreateBtn'>
             <button type="submit">Сохранить</button>
           </div>
-          <div className='DlBtn'>
+          <div className='CloseBtn'>
             <button type="button">Закрыть</button>
+          </div>
+          <div className='DeleteBtn'>
+            <button type='button'>Удалить</button>
           </div>
         </div>
       </form>
