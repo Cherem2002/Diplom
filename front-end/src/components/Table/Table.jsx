@@ -4,8 +4,6 @@ import './Table.css';
 import Select from 'react-select';
 import plus from './blue-plus.png';
 import minus from './red-minus.png';
-import { toggleTablePopup } from '../Header/Header'
-import MainTable from '../MainTable/MainTable';
 
 const Table = ({ tableData, setTableData, setTableOpen }) => {
   const [tableName, setTableName] = useState('');
