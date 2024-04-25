@@ -59,6 +59,20 @@ const Table = ({ tableData, setTableData, setTableOpen }) => {
   };
 
   const handleSubmit = (e) => {
+    // Проверка наличия названия таблицы
+    if (!tableName.trim()) {
+      alert("Введите название таблицы.");
+      return;
+    }
+
+    // Проверка наличия заполненных полей первой строки
+    if (
+      tableRows[0].name.trim() === '' ||
+      tableRows[0].type === null 
+    ) {
+      alert("Заполните первые 2 поля первой строки.");
+      return;
+    }
     e.preventDefault();
     const newTableData = { id: tableIdCounter, name: tableName, rows: tableRows };
     setTableData(prevTableData => [...prevTableData, newTableData]);
