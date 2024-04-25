@@ -3,10 +3,11 @@ import React, { useState } from 'react';
 import './Table.css';
 import Select from 'react-select';
 import plus from './blue-plus.png';
-import {toggleTablePopup} from '../Header/Header'
+import minus from './red-minus.png';
+import { toggleTablePopup } from '../Header/Header'
 import MainTable from '../MainTable/MainTable';
 
-const Table = ({ tableData, setTableData  , setTableOpen}) => {
+const Table = ({ tableData, setTableData, setTableOpen }) => {
   const [tableName, setTableName] = useState('');
   const [tableRows, setTableRows] = useState([
     {
@@ -51,12 +52,18 @@ const Table = ({ tableData, setTableData  , setTableOpen}) => {
     ]);
   };
 
+  const deleteRow = (index) => {
+    const updatedRows = [...tableRows];
+    updatedRows.splice(index, 1);
+    setTableRows(updatedRows);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const newTableData = { id: tableIdCounter, name: tableName, rows: tableRows };
     setTableData(prevTableData => [...prevTableData, newTableData]);
     console.log('Отправленные данные:');
-    console.log(newTableData); 
+    console.log(newTableData);
     setTableName('');
     setTableRows([{ /* reset rows to initial state */ }]);
     setTableIdCounter(tableIdCounter + 1);
@@ -64,10 +71,10 @@ const Table = ({ tableData, setTableData  , setTableOpen}) => {
 
   };
 
- 
+
   return (
     <div className='TableCreator'>
-      <form  onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <label>Название таблицы</label>
         <div>
           <input type="text" value={tableName} onChange={(e) => setTableName(e.target.value)} />
@@ -99,6 +106,11 @@ const Table = ({ tableData, setTableData  , setTableOpen}) => {
                 <td><Select options={options} value={row.foreignTable} onChange={(value) => handleInputChange(index, 'foreignTable', value)} /></td>
                 <td><Select options={options} value={row.foreignField} onChange={(value) => handleInputChange(index, 'foreignField', value)} /></td>
                 <td>{index === tableRows.length - 1 ? <img src={plus} alt='Плюс' style={{ width: '20px', height: '20px', cursor: 'pointer' }} onClick={addRow} /> : null}</td>
+                <td>
+                  {index === 0 ? null : (
+                    <img src={minus} alt='Минус' style={{ width: '20px', height: '20px', cursor: 'pointer' }} onClick={deleteRow} />
+                  )}
+                </td>
               </tr>
             ))}
           </tbody>
