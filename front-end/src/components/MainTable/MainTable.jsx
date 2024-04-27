@@ -2,20 +2,36 @@ import React, { useState } from 'react';
 import './MainTable.css';
 import EditTable from '../EditTable/EditTable';
 import Draggable from 'react-draggable';
+import Table from '../Table/Table';
+import Header from '../Header/Header';
 
 
 
-const MainTable = ({ tableData }) => {
+
+const MainTable = ({ tableData, setTableData }) => {
 
   const [isEditTableOpen, setIsEditTableOpen] = useState(false);
   const [currentTableName, setCurrentTableName] = useState('');
   const [currentTableRows, setCurrentTableRows] = useState([]);
+  const [selectedTableId, setSelectedTableId] = useState(null); // Добавлено сохранение выбранного id таблицы
 
-  const handleTableClick = (tableName, tableRows) => {
+
+
+
+
+  const handleTableClick = (tableIdCounter, tableName, tableRows) => {
+    setSelectedTableId(tableIdCounter); // Сохраняем выбранный id таблицы
     setCurrentTableName(tableName);
     setCurrentTableRows(tableRows);
     setIsEditTableOpen(true);
   };
+
+  const handleDeleteTable = () => {
+    const updatedTableData = tableData.filter(table => table.id !== selectedTableId);
+    setTableData(updatedTableData);
+    setIsEditTableOpen(false);
+  };
+
 
   console.log('Пришедшие данные:');
   console.log(tableData);
@@ -31,11 +47,12 @@ const MainTable = ({ tableData }) => {
           tableName={currentTableName}
           tableRows={currentTableRows}
           onClose={() => setIsEditTableOpen(false)}
+          onDelete={handleDeleteTable}
         />
       )}
       {tableData.map((table, index) => (
         <Draggable key={index}>
-          <form key={table.id} onClick={() => handleTableClick(table.name, table.rows)}>
+          <form key={table.id} onClick={() => handleTableClick(table.id, table.name, table.rows)}>
             <h2>{table.name}</h2>
             <table>
               <thead>
@@ -54,9 +71,9 @@ const MainTable = ({ tableData }) => {
               </tbody>
             </table>
           </form>
-          </Draggable>
-        ))}
-        </div>
+        </Draggable>
+      ))}
+    </div>
   );
 };
 

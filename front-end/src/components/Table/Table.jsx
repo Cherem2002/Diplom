@@ -134,9 +134,6 @@ const Table = ({ tableData, setTableData, setTableOpen }) => {
           <div className='CloseBtn'>
             <button type="button">Закрыть</button>
           </div>
-          <div className='DeleteBtn'>
-            <button type='button'>Удалить</button>
-          </div>
         </div>
       </form>
     </div>

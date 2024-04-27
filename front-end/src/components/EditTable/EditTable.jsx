@@ -5,14 +5,14 @@ import plus from '../Table/blue-plus.png';
 import minus from '../Table/red-minus.png';
 import './EditTable.css';
 
-const EditTable = ({ tableName, tableRows, onClose }) => {
+const EditTable = ({ tableName, tableRows, onClose, onDelete, tableData }) => {
 
     const [editedTableName, setEditedTableName] = useState(tableName);
     const [editedTableRows, setEditedTableRows] = useState(tableRows);
 
-    useEffect(() => {
-        setEditedTableName(tableName);
-    }, [tableName])
+    const handleDelete = () => {
+        onDelete(); // Вызываем функцию onDelete, переданную из родительского компонента
+      };
 
 
     const options = [
@@ -135,7 +135,7 @@ const EditTable = ({ tableName, tableRows, onClose }) => {
                             <button type="submit">Сохранить</button>
                         </div>
                         <div className='CloseBtn'>
-                            <button type="button">Закрыть</button>
+                            <button onClick={handleDelete}>Удалить</button>
                         </div>
                     </div>
                 </form>
