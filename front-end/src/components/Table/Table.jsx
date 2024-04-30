@@ -78,7 +78,7 @@ const Table = ({ tableData, setTableData, setTableOpen }) => {
     console.log(newTableData);
     setTableName('');
     setTableRows([{ /* reset rows to initial state */ }]);
-    setTableIdCounter(tableIdCounter + 1);
+    setTableIdCounter(prevId => prevId + 1); // Увеличиваем id на 1
     setTableOpen(false);
 
   };
