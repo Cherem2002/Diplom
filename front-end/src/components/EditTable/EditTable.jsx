@@ -27,10 +27,10 @@ const EditTable = ({ tableName, tableRows, onClose, onDelete, tableData }) => {
         if (field === 'isForeignKey') {
             // Если выбран флажок ForeignKey, сделаем селекты для внешних ключей доступными
             if (value) {
-              updatedRows[index].foreignTable = null;
-              updatedRows[index].foreignField = null;
+                updatedRows[index].foreignTable = null;
+                updatedRows[index].foreignField = null;
             }
-          }
+        }
         setEditedTableRows(updatedRows);
     };
 
@@ -105,11 +105,26 @@ const EditTable = ({ tableName, tableRows, onClose, onDelete, tableData }) => {
                                 <td><input type="checkbox" checked={row.isForeignKeyforeignKey} onChange={(e) => handleInputChange(index, 'isForeignKey', e.target.checked)} /></td>
                                 <td>
                                     {/* Селект для внешней таблицы доступен только если выбран флажок ForeignKey */}
-                                    {row.isForeignKey && <Select options={options} value={row.foreignTable} onChange={(value) => handleInputChange(index, 'foreignTable', value)} />}
+                                    {row.isForeignKey && tableData && tableData.map((table) => (
+                                        <option key={table.id} value={table.id}>{table.name}</option>
+                                    ))}
+                                    {row.isForeignKey && (
+                                        <Select
+                                            options={tableData}
+                                            value={row.foreignTable}
+                                            onChange={(selectedOption) => handleInputChange(index, 'foreignTable', selectedOption)}
+                                        />
+                                    )}
                                 </td>
                                 <td>
-                                    {/* Селект для внешнего поля доступен только если выбран флажок ForeignKey */}
-                                    {row.isForeignKey && <Select options={options} value={row.foreignField} onChange={(value) => handleInputChange(index, 'foreignField', value)} />}
+                                    {/* Селект для внешнего поля доступен только если выбран флажок ForeignKey и выбрана внешняя таблица */}
+                                    {row.isForeignKey && row.foreignTable && (
+                                        <Select
+                                            options={tableData.find(table => table.id === row.foreignTable.value).rows.map(row => ({ value: row.name, label: row.name }))}
+                                            value={row.foreignField}
+                                            onChange={(selectedOption) => handleInputChange(index, 'foreignField', selectedOption)}
+                                        />
+                                    )}
                                 </td>
                                 <td>
                                     {index === tableRows.length - 1 ? (

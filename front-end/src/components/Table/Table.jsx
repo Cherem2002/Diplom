@@ -26,7 +26,6 @@ const Table = ({ tableData, setTableData, setTableOpen }) => {
     { value: 'char', label: 'char' },
   ];
 
-  const [tableIdCounter, setTableIdCounter] = useState(1);
 
   const handleInputChange = (index, field, value) => {
     const updatedRows = [...tableRows];
@@ -79,15 +78,14 @@ const Table = ({ tableData, setTableData, setTableOpen }) => {
       return;
     }
     e.preventDefault();
+    const tableIdCounter = Date.now();
     const newTableData = { id: tableIdCounter, name: tableName, rows: tableRows };
     setTableData(prevTableData => [...prevTableData, newTableData]);
     console.log('Отправленные данные:');
     console.log(newTableData);
     setTableName('');
     setTableRows([{ /* reset rows to initial state */ }]);
-    setTableIdCounter(prevId => prevId + 1); // Увеличиваем id на 1
     setTableOpen(false);
-
   };
 
 
@@ -124,11 +122,26 @@ const Table = ({ tableData, setTableData, setTableOpen }) => {
                 <td><input type="checkbox" checked={row.isForeignKeyforeignKey} onChange={(e) => handleInputChange(index, 'isForeignKey', e.target.checked)} /></td>
                 <td>
                   {/* Селект для внешней таблицы доступен только если выбран флажок ForeignKey */}
-                  {row.isForeignKey && <Select options={options} value={row.foreignTable} onChange={(value) => handleInputChange(index, 'foreignTable', value)} />}
+                  {row.isForeignKey && tableData && tableData.map((table) => (
+                    <option key={table.id} value={table.id}>{table.name}</option>
+                  ))}
+                  {row.isForeignKey && (
+                    <Select
+                      options={tableData}
+                      value={row.foreignTable}
+                      onChange={(selectedOption) => handleInputChange(index, 'foreignTable', selectedOption)}
+                    />
+                  )}
                 </td>
                 <td>
-                  {/* Селект для внешнего поля доступен только если выбран флажок ForeignKey */}
-                  {row.isForeignKey && <Select options={options} value={row.foreignField} onChange={(value) => handleInputChange(index, 'foreignField', value)} />}
+                  {/* Селект для внешнего поля доступен только если выбран флажок ForeignKey и выбрана внешняя таблица */}
+                  {row.isForeignKey && row.foreignTable && (
+                    <Select
+                      options={tableData.find(table => table.id === row.foreignTable.value).rows.map(row => ({ value: row.name, label: row.name }))}
+                      value={row.foreignField}
+                      onChange={(selectedOption) => handleInputChange(index, 'foreignField', selectedOption)}
+                    />
+                  )}
                 </td>
                 <td>{index === tableRows.length - 1 ? <img src={plus} alt='Плюс' style={{ width: '20px', height: '20px', cursor: 'pointer' }} onClick={addRow} /> : null}</td>
                 <td>
