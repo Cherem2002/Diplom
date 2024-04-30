@@ -7,7 +7,8 @@ const Import = () => {
     const options = [
         { value: 'PostgreSQL', label: 'PostgreSQL' },
         { value: 'Microsoft SQL Server', label: 'Microsoft SQL Server' },
-        { value: 'MySQL', label: 'MySQL' }
+        { value: 'MySQL', label: 'MySQL' },
+        { value: 'Oracle', label: 'Oracle' }
     ]
     return (
         <div className="ImP">
