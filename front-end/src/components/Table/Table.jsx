@@ -14,7 +14,7 @@ const Table = ({ tableData, setTableData, setTableOpen }) => {
       isPrimaryKey: false,
       isUnique: false,
       isAutoIncrement: false,
-      foreignKey: null,
+      isForeignKey: false,
       foreignTable: null,
       foreignField: null,
     },
@@ -31,6 +31,13 @@ const Table = ({ tableData, setTableData, setTableOpen }) => {
   const handleInputChange = (index, field, value) => {
     const updatedRows = [...tableRows];
     updatedRows[index][field] = value;
+    if (field === 'isForeignKey') {
+      // Если выбран флажок ForeignKey, сделаем селекты для внешних ключей доступными
+      if (value) {
+        updatedRows[index].foreignTable = null;
+        updatedRows[index].foreignField = null;
+      }
+    }
     setTableRows(updatedRows);
   };
 
@@ -43,7 +50,7 @@ const Table = ({ tableData, setTableData, setTableOpen }) => {
         isPrimaryKey: false,
         isUnique: false,
         isAutoIncrement: false,
-        foreignKey: null,
+        isForeignKey: false,
         foreignTable: null,
         foreignField: null,
       },
@@ -66,7 +73,7 @@ const Table = ({ tableData, setTableData, setTableOpen }) => {
     // Проверка наличия заполненных полей первой строки
     if (
       tableRows[0].name.trim() === '' ||
-      tableRows[0].type === null 
+      tableRows[0].type === null
     ) {
       alert("Заполните первые 2 поля первой строки.");
       return;
@@ -114,9 +121,15 @@ const Table = ({ tableData, setTableData, setTableOpen }) => {
                 <td><input type="checkbox" checked={row.isPrimaryKey} onChange={(e) => handleInputChange(index, 'isPrimaryKey', e.target.checked)} /></td>
                 <td><input type="checkbox" checked={row.isUnique} onChange={(e) => handleInputChange(index, 'isUnique', e.target.checked)} /></td>
                 <td><input type="checkbox" checked={row.isAutoIncrement} onChange={(e) => handleInputChange(index, 'isAutoIncrement', e.target.checked)} /></td>
-                <td><Select options={options} value={row.foreignKey} onChange={(value) => handleInputChange(index, 'foreignKey', value)} /></td>
-                <td><Select options={options} value={row.foreignTable} onChange={(value) => handleInputChange(index, 'foreignTable', value)} /></td>
-                <td><Select options={options} value={row.foreignField} onChange={(value) => handleInputChange(index, 'foreignField', value)} /></td>
+                <td><input type="checkbox" checked={row.isForeignKeyforeignKey} onChange={(e) => handleInputChange(index, 'isForeignKey', e.target.checked)} /></td>
+                <td>
+                  {/* Селект для внешней таблицы доступен только если выбран флажок ForeignKey */}
+                  {row.isForeignKey && <Select options={options} value={row.foreignTable} onChange={(value) => handleInputChange(index, 'foreignTable', value)} />}
+                </td>
+                <td>
+                  {/* Селект для внешнего поля доступен только если выбран флажок ForeignKey */}
+                  {row.isForeignKey && <Select options={options} value={row.foreignField} onChange={(value) => handleInputChange(index, 'foreignField', value)} />}
+                </td>
                 <td>{index === tableRows.length - 1 ? <img src={plus} alt='Плюс' style={{ width: '20px', height: '20px', cursor: 'pointer' }} onClick={addRow} /> : null}</td>
                 <td>
                   {index === 0 ? null : (
