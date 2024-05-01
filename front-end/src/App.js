@@ -20,7 +20,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Header setTableData={setTableData} />
+        <Header setTableData={setTableData} tableData={tableData} />
         <Routes>
           <Route path="/" element={<Home tableData={tableData} setTableData={setTableData} />} />
         </Routes>

@@ -17,7 +17,7 @@ import Login from '../Login/Login';
 import Table from '../Table/Table';
 
 
-const Header = ({ setTableData }) => {
+const Header = ({ setTableData, tableData }) => {
     const [isGuestMenuOpen, setGuestMenuOpen] = useState(false);
     const [isBarMenuOpen, setBarMenuOpen] = useState(false);
     const [isStickerOpen, setIsStickerOpen] = useState(false);
@@ -81,7 +81,7 @@ const Header = ({ setTableData }) => {
     return (
         <header className='Header'>
             {isCreateOpen && <Create />}
-            {isExportOpen && <Export />}
+            {isExportOpen && <Export tableData={tableData} />}
             {isImportOpen && <Import />}
             {isRegOpen && <Register toggleLoginPopup={toggleLoginPopup} />}
             {isLoginOpen && <Login toggleRegPopup={toggleRegPopup} />}
