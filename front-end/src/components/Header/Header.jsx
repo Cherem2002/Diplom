@@ -85,7 +85,7 @@ const Header = ({ setTableData, tableData }) => {
             {isImportOpen && <Import />}
             {isRegOpen && <Register toggleLoginPopup={toggleLoginPopup} />}
             {isLoginOpen && <Login toggleRegPopup={toggleRegPopup} />}
-            {isTableOpen && <Table setTableOpen={setTableOpen} setTableData={setTableData} />}
+            {isTableOpen && <Table setTableOpen={setTableOpen} setTableData={setTableData} tableData={tableData}/>}
             <div className='Bar' onClick={toggleBarMenu}>
                 <img src={bar} alt='Бар' />
                 {isBarMenuOpen && <Menu toggleCreatePopup={toggleCreatePopup} />}
