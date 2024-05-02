@@ -105,12 +105,9 @@ const EditTable = ({ tableName, tableRows, onClose, onDelete, tableData }) => {
                                 <td><input type="checkbox" checked={row.isForeignKeyforeignKey} onChange={(e) => handleInputChange(index, 'isForeignKey', e.target.checked)} /></td>
                                 <td>
                                     {/* Селект для внешней таблицы доступен только если выбран флажок ForeignKey */}
-                                    {row.isForeignKey && tableData && tableData.map((table) => (
-                                        <option key={table.id} value={table.id}>{table.name}</option>
-                                    ))}
-                                    {row.isForeignKey && (
+                                    {row.isForeignKey && tableData && (
                                         <Select
-                                            options={tableData}
+                                            options={tableData.map((table) => ({ value: table.id, label: table.name }))}
                                             value={row.foreignTable}
                                             onChange={(selectedOption) => handleInputChange(index, 'foreignTable', selectedOption)}
                                         />
@@ -118,9 +115,9 @@ const EditTable = ({ tableName, tableRows, onClose, onDelete, tableData }) => {
                                 </td>
                                 <td>
                                     {/* Селект для внешнего поля доступен только если выбран флажок ForeignKey и выбрана внешняя таблица */}
-                                    {row.isForeignKey && row.foreignTable && (
+                                    {row.isForeignKey && (
                                         <Select
-                                            options={tableData.find(table => table.id === row.foreignTable.value).rows.map(row => ({ value: row.name, label: row.name }))}
+                                            options={row.foreignTable ? tableData.find(table => table.id === row.foreignTable.value).rows.map(row => ({ value: row.name, label: row.name })) : []}
                                             value={row.foreignField}
                                             onChange={(selectedOption) => handleInputChange(index, 'foreignField', selectedOption)}
                                         />
