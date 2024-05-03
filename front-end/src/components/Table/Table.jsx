@@ -132,6 +132,7 @@ const Table = ({ tableData, setTableData, setTableOpen }) => {
                 </td>
                 <td>
                   {/* Селект для внешнего поля доступен только если выбран флажок ForeignKey и выбрана внешняя таблица */}
+                  {console.log('Таблица ', row.foreignTable)}
                   {row.isForeignKey && (
                     <Select
                       options={row.foreignTable ? tableData.find(table => table.id === row.foreignTable.value).rows.map(row => ({ value: row.name, label: row.name })) : []}
