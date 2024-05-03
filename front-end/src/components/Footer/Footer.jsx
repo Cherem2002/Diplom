@@ -2,7 +2,6 @@ import minus from './minus.png';
 import plus from './plus.png';
 import './Footer.css';
 
-
 const Footer = () => {
 
 
