@@ -2,11 +2,6 @@ import React, { useState } from 'react';
 import './MainTable.css';
 import EditTable from '../EditTable/EditTable';
 import Draggable from 'react-draggable';
-import Table from '../Table/Table';
-import Header from '../Header/Header';
-
-
-
 
 const MainTable = ({ tableData, setTableData }) => {
 
@@ -14,10 +9,6 @@ const MainTable = ({ tableData, setTableData }) => {
   const [currentTableName, setCurrentTableName] = useState('');
   const [currentTableRows, setCurrentTableRows] = useState([]);
   const [selectedTableId, setSelectedTableId] = useState(null); // Добавлено сохранение выбранного id таблицы
-
-
-
-
 
   const handleTableClick = (tableIdCounter, tableName, tableRows) => {
     setSelectedTableId(tableIdCounter); // Сохраняем выбранный id таблицы
@@ -31,7 +22,6 @@ const MainTable = ({ tableData, setTableData }) => {
     setTableData(updatedTableData);
     setIsEditTableOpen(false);
   };
-
 
   console.log('Пришедшие данные:');
   console.log(tableData);

@@ -33,7 +33,6 @@ const Header = ({ setTableData, tableData }) => {
         setTableData(data);
       };
 
-
     const toggleTablePopup = () => {
         setTableOpen(true);
     }
