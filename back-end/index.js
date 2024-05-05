@@ -4,12 +4,9 @@ const port = 4000;
 import pg from 'pg';
 import cors from 'cors';
 
-
-
 const { Pool } = pg;
 
 app.use(cors());
-
 
 const pool = new Pool({
   user: 'postgres',
