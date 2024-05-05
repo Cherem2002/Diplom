@@ -1,15 +1,30 @@
 import './Export.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Select from 'react-select'
+import axios from 'axios'; // Импортируем axios
 
 
 const Export = ({ tableData }) => {
-    const options = [
-        { value: 'PostgreSQL', label: 'PostgreSQL' },
-        { value: 'Microsoft SQL Server', label: 'Microsoft SQL Server' },
-        { value: 'MySQL', label: 'MySQL' },
-        { value: 'Oracle', label: 'Oracle' }
-    ]
+
+    const [sqlOptions, setSQLOptions] = useState([]); // Состояние для хранения опций SQL типов
+
+    useEffect(() => {
+        // Функция для загрузки данных с сервера
+        const fetchSQLOptions = async () => {
+            try {
+                const response = await axios.get(`http://localhost:4000/sql_type`);
+                const data = response.data.map(item => ({
+                    value: item.name_sql,
+                    label: item.name_sql,
+                  }));
+                setSQLOptions(data); // Устанавливаем полученные данные в состояние
+            } catch (error) {
+                console.error('Ошибка при загрузке данных:', error);
+            }
+        };
+
+        fetchSQLOptions(); // Вызываем функцию загрузки данных при монтировании компонента
+    }, []);
 
     console.log('Данные экспорт:',tableData);
 
@@ -80,7 +95,7 @@ const Export = ({ tableData }) => {
                     Выберите тип SQL
                 </div>
                 <Select
-                    options={options}
+                    options={sqlOptions}
                     value={selectedSQLType}
                     onChange={setSelectedSQLType}
                 />
