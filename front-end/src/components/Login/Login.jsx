@@ -1,15 +1,19 @@
 import './Login.css';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const Login = ({ toggleRegPopup }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleLogin = () => {
-        // Реализация логики входа
-        console.log('Email:', email);
-        console.log('Password:', password);
+    const handleLogin = async () => {
+        try {
+            const response = await axios.post('/login', { email, password });
+            console.log(response.data.message); // Выводим сообщение об успешном входе
+        } catch (error) {
+            console.error('Ошибка при входе:', error.response.data.message);
+            // Здесь можно обработать ошибку, например, показать сообщение об ошибке пользователю
+        }
     };
 
     const handleToggleRegPopup = () => {

@@ -1,15 +1,19 @@
 import './Register.css';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const Register = ({ toggleLoginPopup }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleRegister = () => {
-        // Реализация логики регистрации
-        console.log('Email:', email);
-        console.log('Password:', password);
+    const handleRegister = async () => {
+        try {
+            const response = await axios.post('/register', { email, password });
+            console.log(response.data.message); // Выводим сообщение о успешной регистрации
+        } catch (error) {
+            console.error('Ошибка при регистрации:', error.response.data.message);
+            // Здесь можно обработать ошибку, например, показать сообщение об ошибке пользователю
+        }
     };
 
     const handleToggleLoginPopup = () => {
