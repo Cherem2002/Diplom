@@ -10,7 +10,7 @@ const MainTable = ({ tableData, setTableData }) => {
   const [currentTableRows, setCurrentTableRows] = useState([]);
   const [selectedTableId, setSelectedTableId] = useState(null); // Добавлено сохранение выбранного id таблицы
 
-  const handleTableClick = (tableIdCounter, tableName, tableRows) => {
+  const handleTableDoubleClick  = (tableIdCounter, tableName, tableRows) => {
     setSelectedTableId(tableIdCounter); // Сохраняем выбранный id таблицы
     setCurrentTableName(tableName);
     setCurrentTableRows(tableRows);
@@ -42,7 +42,7 @@ const MainTable = ({ tableData, setTableData }) => {
       )}
       {tableData.map((table, index) => (
         <Draggable key={index}>
-          <form key={table.id} onClick={() => handleTableClick(table.id, table.name, table.rows)}>
+          <form key={table.id} onDoubleClick={() => handleTableDoubleClick (table.id, table.name, table.rows)}>
             <h2>{table.name}</h2>
             <table>
               <thead>
