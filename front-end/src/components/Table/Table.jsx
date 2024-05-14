@@ -1,4 +1,3 @@
-// Table.js
 import React, { useState } from 'react';
 import './Table.css';
 import Select from 'react-select';
@@ -31,7 +30,6 @@ const Table = ({ tableData, setTableData, setTableOpen }) => {
     const updatedRows = [...tableRows];
     updatedRows[index][field] = value;
     if (field === 'isForeignKey') {
-      // Если выбран флажок ForeignKey, сделаем селекты для внешних ключей доступными
       if (value) {
         updatedRows[index].foreignTable = null;
         updatedRows[index].foreignField = null;
@@ -63,13 +61,11 @@ const Table = ({ tableData, setTableData, setTableOpen }) => {
   };
 
   const handleSubmit = (e) => {
-    // Проверка наличия названия таблицы
     if (!tableName.trim()) {
       alert("Введите название таблицы.");
       return;
     }
 
-    // Проверка наличия заполненных полей первой строки
     if (
       tableRows[0].name.trim() === '' ||
       tableRows[0].type === null
@@ -121,7 +117,6 @@ const Table = ({ tableData, setTableData, setTableOpen }) => {
                 <td><input type="checkbox" checked={row.isAutoIncrement} onChange={(e) => handleInputChange(index, 'isAutoIncrement', e.target.checked)} /></td>
                 <td><input type="checkbox" checked={row.isForeignKeyforeignKey} onChange={(e) => handleInputChange(index, 'isForeignKey', e.target.checked)} /></td>
                 <td>
-                  {/* Селект для внешней таблицы доступен только если выбран флажок ForeignKey */}
                   {row.isForeignKey && tableData && (
                     <Select
                       options={tableData.map((table) => ({ value: table.id, label: table.name }))}
@@ -131,7 +126,6 @@ const Table = ({ tableData, setTableData, setTableOpen }) => {
                   )}
                 </td>
                 <td>
-                  {/* Селект для внешнего поля доступен только если выбран флажок ForeignKey и выбрана внешняя таблица */}
                   {row.isForeignKey && (
                     <Select
                       options={row.foreignTable ? tableData.find(table => table.id === row.foreignTable.value).rows.map(row => ({ value: row.name, label: row.name })) : []}

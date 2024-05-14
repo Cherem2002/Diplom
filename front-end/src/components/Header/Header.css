@@ -1,4 +1,3 @@
-/* Стили для вашего заголовка (header) */
 .Header {
   position: fixed;
   top: 0;
@@ -37,26 +36,20 @@
   font-size: 20px;
 }
 
-/* Стили для вложенных ссылок (Войти и Зарегистрироваться) */
 .Login-link a:hover {
   color: #ffffff;
   background-color: #2180CF;
 }
 
-/* Отображение меню при открытом состоянии */
 .Login-link span::after {
   content: '\25BC';
-  /* Символ стрелки вниз */
   font-size: 12px;
 }
 
-/* Скрытие стрелки при закрытом состоянии */
 .Login-link.collapsed span::after {
   content: '\25BC';
-  /* Символ стрелки вправо */
 }
 
-/* Стили для вложенного меню */
 .Login-link ul {
   list-style: none;
   padding: 0;
@@ -69,16 +62,13 @@
   font-size: 12px;
 }
 
-/* Отображение меню при открытом состоянии */
 .Login-link.open ul {
   display: block;
 }
 
-/* Стили для вашего логотипа (bar) */
 .Bar img {
   cursor: pointer;
   width: 50px;
-  /* Подберите нужную ширину логотипа */
 }
 
 .Table img {
@@ -115,7 +105,6 @@
   display: flex;
   justify-content: space-between;
   padding: 5px 5px;
-  /* Выравнивание элементов по горизонтали */
   border-right: 5px solid #2180CF;
   border-left: 5px solid #2180CF;
 }
@@ -130,14 +119,12 @@
 .Import {
   flex: 5;
   padding: 5px;
-  /* Это обеспечит равномерное распределение ширины между .Note и .Table */
 }
 
 .im-ex {
   display: flex;
   justify-content: space-between;
   padding: 5px 5px;
-  /* Выравнивание элементов по горизонтали */
 }
 
 .Name {

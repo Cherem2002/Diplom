@@ -2,13 +2,9 @@
   position: fixed;
   display: flex;
   flex-direction: column;
-  /* Устанавливаем направление контейнера на вертикальное */
   justify-content: center;
-  /* Выравнивание по вертикали */
   align-items: center;
-  /* Выравнивание по горизонтали */
   height: 100vh;
-  /* Минимальная высота вьюпорта */
   top: 0;
   left: 0;
   right: 0;
@@ -19,7 +15,6 @@
 
 .Login form {
   width: 300px;
-  /* Ширина формы */
   padding-left: 20px;
   padding-right: 20px;
   padding-top: 20px;

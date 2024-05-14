@@ -20,7 +20,6 @@ import Table from '../Table/Table';
 const Header = ({ setTableData, tableData }) => {
     const [isGuestMenuOpen, setGuestMenuOpen] = useState(false);
     const [isBarMenuOpen, setBarMenuOpen] = useState(false);
-    const [isStickerOpen, setIsStickerOpen] = useState(false);
     const [stickers, setStickers] = useState([]);
     const [isCreateOpen, setIsCreateOpen] = useState(false);
     const [isExportOpen, setExportOpen] = useState(false);

@@ -9,15 +9,14 @@ const Login = ({ toggleRegPopup }) => {
     const handleLogin = async () => {
         try {
             const response = await axios.post('/login', { email, password });
-            console.log(response.data.message); // Выводим сообщение об успешном входе
+            console.log(response.data.message); 
         } catch (error) {
             console.error('Ошибка при входе:', error.response.data.message);
-            // Здесь можно обработать ошибку, например, показать сообщение об ошибке пользователю
         }
     };
 
     const handleToggleRegPopup = () => {
-        toggleRegPopup(); // Вызываем функцию, переданную через пропс
+        toggleRegPopup(); 
     };
 
     return (

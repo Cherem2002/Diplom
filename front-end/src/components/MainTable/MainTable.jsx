@@ -8,10 +8,10 @@ const MainTable = ({ tableData, setTableData }) => {
   const [isEditTableOpen, setIsEditTableOpen] = useState(false);
   const [currentTableName, setCurrentTableName] = useState('');
   const [currentTableRows, setCurrentTableRows] = useState([]);
-  const [selectedTableId, setSelectedTableId] = useState(null); // Добавлено сохранение выбранного id таблицы
+  const [selectedTableId, setSelectedTableId] = useState(null); 
 
   const handleTableDoubleClick  = (tableIdCounter, tableName, tableRows) => {
-    setSelectedTableId(tableIdCounter); // Сохраняем выбранный id таблицы
+    setSelectedTableId(tableIdCounter); 
     setCurrentTableName(tableName);
     setCurrentTableRows(tableRows);
     setIsEditTableOpen(true);
@@ -27,7 +27,7 @@ const MainTable = ({ tableData, setTableData }) => {
   console.log(tableData);
 
   if (!tableData || !tableData.length) {
-    return null; // Возвращаем null, чтобы не создавать никаких элементов
+    return null; 
   }
 
   return (
