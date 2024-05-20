@@ -24,8 +24,7 @@ const Table = ({ tableData, setTableData, setTableOpen }) => {
     { value: 'string', label: 'string' },
     { value: 'char', label: 'char' },
   ];
-
-
+ 
   const handleInputChange = (index, field, value) => {
     const updatedRows = [...tableRows];
     updatedRows[index][field] = value;
@@ -76,7 +75,7 @@ const Table = ({ tableData, setTableData, setTableOpen }) => {
     e.preventDefault();
     const tableIdCounter = Date.now();
     const newTableData = { id: tableIdCounter, name: tableName, rows: tableRows };
-    setTableData(prevTableData => [...prevTableData, newTableData]);
+    setTableData(prevTableData => Array.isArray(prevTableData) ? [...prevTableData, newTableData] : [newTableData]);
     console.log('Отправленные данные:');
     console.log(newTableData);
     setTableName('');

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './MainTable.css';
 import EditTable from '../EditTable/EditTable';
 import Draggable from 'react-draggable';
@@ -23,14 +23,14 @@ const MainTable = ({ tableData, setTableData }) => {
     setIsEditTableOpen(false);
   };
 
-  console.log('Пришедшие данные:');
+  console.log('Данные MainTable:');
   console.log(tableData);
-
   
   if (!tableData || !tableData.length) {
     return null; 
   }
 
+  
   return (
     <div className="MainTable">
       {isEditTableOpen && (

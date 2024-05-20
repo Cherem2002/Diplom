@@ -50,9 +50,6 @@ const Header = ({ setTableData, tableData }) => {
             setUserEmail(userEmail);
         }
     }, []);
-
-    console.log('email:'+userEmail);
-
     
     const displayEmailWithoutAt = () => {
         const atIndex = userEmail.indexOf('@');
