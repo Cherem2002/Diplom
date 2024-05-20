@@ -8,7 +8,7 @@ import forward from './forward.png';
 import './Header.css';
 import Menu from '../Menu/Menu';
 import Sticker from '../Sticker/Sticker';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Create from '../Create/Create';
 import Export from '../Export/Export';
 import Import from '../Import/Import';
@@ -27,10 +27,45 @@ const Header = ({ setTableData, tableData }) => {
     const [isRegOpen, setRegOpen] = useState(false);
     const [isLoginOpen, setLoginOpen] = useState(false);
     const [isTableOpen, setTableOpen] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [userEmail, setUserEmail] = useState('');
+
+    const handleSuccessfulLogin = (email) => {
+        setIsLoggedIn(true);
+        setUserEmail(email);
+        console.log('успешно вошли');
+        localStorage.setItem('userEmail', email); // Сохраняем email в localStorage
+    };
+
+    const handleLogout = () => {
+        setIsLoggedIn(false);
+        setUserEmail('');
+        localStorage.removeItem('userEmail');
+    };
+
+    useEffect(() => {
+        const userEmail = localStorage.getItem('userEmail');
+        if (userEmail) {
+            setIsLoggedIn(true);
+            setUserEmail(userEmail);
+        }
+    }, []);
+
+    console.log('email:'+userEmail);
+
+    
+    const displayEmailWithoutAt = () => {
+        const atIndex = userEmail.indexOf('@');
+        if (atIndex !== -1) {
+            return userEmail.slice(0, atIndex);
+        } else {
+            return userEmail;
+        }
+    };
 
     const handleTableData = (data) => {
         setTableData(data);
-      };
+    };
 
     const toggleTablePopup = () => {
         setTableOpen(true);
@@ -82,8 +117,8 @@ const Header = ({ setTableData, tableData }) => {
             {isExportOpen && <Export tableData={tableData} />}
             {isImportOpen && <Import />}
             {isRegOpen && <Register toggleLoginPopup={toggleLoginPopup} />}
-            {isLoginOpen && <Login toggleRegPopup={toggleRegPopup} />}
-            {isTableOpen && <Table setTableOpen={setTableOpen} setTableData={setTableData} tableData={tableData}/>}
+            {isLoginOpen && <Login toggleRegPopup={toggleRegPopup} onSuccessfulLogin={handleSuccessfulLogin}/>}
+            {isTableOpen && <Table setTableOpen={setTableOpen} setTableData={setTableData} tableData={tableData} />}
             <div className='Bar' onClick={toggleBarMenu}>
                 <img src={bar} alt='Бар' />
                 {isBarMenuOpen && <Menu toggleCreatePopup={toggleCreatePopup} />}
@@ -121,11 +156,17 @@ const Header = ({ setTableData, tableData }) => {
             <div className='Login-link' onClick={toggleGuestMenu}>
                 {isGuestMenuOpen ? (
                     <>
-                        <a onClick={toggleLoginPopup}>Войти</a>
-                        <a onClick={toggleRegPopup}>Зарегистрироваться</a>
+                        {!isLoggedIn ? (
+                            <>
+                                <a onClick={toggleLoginPopup}>Войти</a>
+                                <a onClick={toggleRegPopup}>Зарегистрироваться</a>
+                            </>
+                        ) : (
+                            <a onClick={handleLogout}>Выйти</a>
+                        )}
                     </>
                 ) : (
-                    <span>Гость</span>
+                    <span>{isLoggedIn ? displayEmailWithoutAt() : 'Гость'}</span>
                 )}
             </div>
         </header>

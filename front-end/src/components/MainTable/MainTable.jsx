@@ -26,6 +26,7 @@ const MainTable = ({ tableData, setTableData }) => {
   console.log('Пришедшие данные:');
   console.log(tableData);
 
+  
   if (!tableData || !tableData.length) {
     return null; 
   }

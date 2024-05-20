@@ -2,14 +2,16 @@ import './Login.css';
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const Login = ({ toggleRegPopup }) => {
+const Login = ({ toggleRegPopup, onSuccessfulLogin}) => {
+    
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     const handleLogin = async () => {
         try {
-            const response = await axios.post('/login', { email, password });
+            const response = await axios.post('http://localhost:4000/login', { email, password });
             console.log(response.data.message); 
+            onSuccessfulLogin(email);
         } catch (error) {
             console.error('Ошибка при входе:', error.response.data.message);
         }

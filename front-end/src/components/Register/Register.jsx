@@ -8,7 +8,7 @@ const Register = ({ toggleLoginPopup }) => {
 
     const handleRegister = async () => {
         try {
-            const response = await axios.post('/register', { email, password });
+            const response = await axios.post('http://localhost:4000/register', { email, password });
             console.log(response.data.message); 
         } catch (error) {
             console.error('Ошибка при регистрации:', error.response.data.message);

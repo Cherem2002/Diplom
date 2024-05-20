@@ -83,6 +83,7 @@ const Table = ({ tableData, setTableData, setTableOpen }) => {
     setTableRows([{ /* reset rows to initial state */ }]);
     setTableOpen(false);
   };
+  
 
 
   return (

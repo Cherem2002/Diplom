@@ -54,7 +54,7 @@ const Export = ({ tableData }) => {
                             }
                             if (row.isForeignKey && row.foreignTable && row.foreignField) {
 
-                                columnScript += `, FOREIGN KEY (${row.name}) REFERENCES ${row.foreignTable.name}(${row.foreignField.name})`;
+                                columnScript += `, FOREIGN KEY (${row.name}) REFERENCES ${row.foreignTable.label}(${row.foreignField.label})`;
                               }
                             if (j !== table.rows.length - 1) {
                                 columnScript += ',';
@@ -82,7 +82,7 @@ const Export = ({ tableData }) => {
                                 columnScript += ' AUTO_INCREMENT';
                               }
                               if (row.isForeignKey && row.foreignTable && row.foreignField) {
-                                columnScript += `, FOREIGN KEY (${row.name}) REFERENCES ${row.foreignTable.name}(${row.foreignField.name})`;
+                                columnScript += `, FOREIGN KEY (${row.name}) REFERENCES ${row.foreignTable.label}(${row.foreignField.label})`;
                               }
                               if (j !== table.rows.length - 1) {
                                 columnScript += ',';
@@ -112,7 +112,7 @@ const Export = ({ tableData }) => {
                                 columnScript += ' IDENTITY(1,1)';
                               }
                               if (row.isForeignKey && row.foreignTable && row.foreignField) {
-                                columnScript += `, FOREIGN KEY (${row.name}) REFERENCES ${row.foreignTable.name}(${row.foreignField.name})`;
+                                columnScript += `, FOREIGN KEY (${row.name}) REFERENCES ${row.foreignTable.label}(${row.foreignField.label})`;
                               }
                               if (j !== table.rows.length - 1) {
                                 columnScript += ',';
@@ -140,7 +140,7 @@ const Export = ({ tableData }) => {
                               if (row.isAutoIncrement) {
                               }
                               if (row.isForeignKey && row.foreignTable && row.foreignField) {
-                                columnScript += `, FOREIGN KEY (${row.name}) REFERENCES ${row.foreignTable.name}(${row.foreignField.name})`;
+                                columnScript += `, FOREIGN KEY (${row.name}) REFERENCES ${row.foreignTable.label}(${row.foreignField.label})`;
                               }
                               if (j !== table.rows.length - 1) {
                                 columnScript += ',';
