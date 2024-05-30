@@ -75,7 +75,12 @@ const MainTable = ({ tableData, setTableData }) => {
               <tbody>
                 {table.rows.map((row, rowIndex) => (
                   <tr key={rowIndex}>
-                    <td>{row.name}</td>
+                    <td style={row.isPrimaryKey ? { fontWeight: 'bold', textDecoration: 'underline' } : {}}>
+                      {row.name}
+                      {row.isForeignKey && row.foreignTable && (
+                          <> ({row.foreignField.value})</>
+                        )}
+                    </td>
                     <td>{row.type}</td>
                   </tr>
                 ))}
